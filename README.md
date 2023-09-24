@@ -1,5 +1,9 @@
 # project_jarvis
 Custom Gesture UI for Apple Vision Pro
+## Progress
+[Hand tracking gesture sample code](https://github.com/AlohaYos/ProjectJarvis/tree/main/HandTrackingDemo)  
+
+---
 
 ## メンバー
 [橋本 龍（Moaiman-maker）](https://github.com/Moaiman-maker)  
@@ -26,16 +30,16 @@ Custom Gesture UI for Apple Vision Pro
 ## 実装
 - 開発環境：visionOS / Xcode
 - 開発言語：SwiftUI / Swift
+- 3Dモデリング：Reality Composer Pro / Blender / Reality converter etc.
 
 ## 展望
 空間ジェスチャーはNLUI（自然言語UI）と併用されて、これから広く利用されていくインターフェイスだと考えています。エンジニアがそれぞれジェスチャーを考え個別に実装していくだけではなく、いろんな人が考えたジェスチャーをオープンソースとして持ち寄ってもらい、手軽に利用できるようなジェスチャーUIライブラリを成長させていきたいです。
 
 ## 課題
 - Vision Proの販売が2024年に予定されているので、実際に動くモノがどこまで試作できるかは未知数ですが、現在提供されているシミュレータで可能な範囲から進めていきます。[Appleのサポート](https://developer.apple.com/visionos/work-with-apple/)も利用していく予定です。
-- オープンソース化してジェスチャーのプルリクを受ける事を考えると、共通化できるAPIインターフェイスの策定などが課題になると思います。このAPI周りを第三者的に評価してもらえると助かります。
+- 共通化できるAPIインターフェイスの策定などが課題になると思います。
 
 ## ソースコード
-[JARVISプロジェクトGithub](https://github.com/Moaiman-maker/project_jarvis) に準備中。  
 ※visionOSのNDAが解けるまではAppleデベロッパー登録している人に限定しての公開です。
 
 ## デモサイト
