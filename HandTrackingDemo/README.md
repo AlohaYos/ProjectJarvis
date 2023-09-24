@@ -4,8 +4,6 @@ You no longer need real VisionPro device to test your spatial gestures.
 This module uses VNHumanHandPoseObservation on Mac/iPhone to capture finger movement.  
 And send that hand tracking data to visionOS simulator on Mac via bluetooth.  
 All you need is Mac (additionally iPhone/iPad as TrackingSender) to debug visionOS hand tracking.  
-  
-- Aug/30/2023: Now TrackingSender works on Mac Catalyst using mac front camera.  
 
 ## HandTrackFake module
 HandTrackFake.swift
@@ -22,7 +20,7 @@ var sessionState: MCSessionState = .notConnected
  - Encode hand tracking data (2D) into Json.
  - Send that Json to TrackingReceiver.app via bluetooth.
 
-https://github.com/AlohaYos/HandTrackFake/assets/4338056/0e84ad30-c92b-4d01-9118-038805d15345
+https://github.com/AlohaYos/ProjectJarvis/assets/4338056/9ba03b68-99d9-46c4-87be-5b2338081ef4
 
 AppDelegate.swift
 ```swift
@@ -52,7 +50,7 @@ Bonjour services
  - Decode Json data into hand tracking data (3D).
  - Display hands (finger positions) on visionOS simulator display.
 
-https://github.com/AlohaYos/HandTrackFake/assets/4338056/b7e648ef-9f74-4e36-b17c-6057d46702f9
+https://github.com/AlohaYos/ProjectJarvis/assets/4338056/d6497d50-848b-4ca9-bb9f-bf70078778aa
 
 TrackingReceiverApp.swift
 ```swift
