@@ -8,7 +8,6 @@ import SwiftUI
 import ARKit
 import RealityKit
 import RealityKitContent
-import SceneKit
 import MultipeerConnectivity
 
 var gestureAloha: Gesture_Aloha?
@@ -35,7 +34,6 @@ struct ImmersiveView: View {
 					content.add(scene)
 				}
 				if let hands = try? await Entity(named: "hands", in: realityKitContentBundle) {
-//					hands.position = SIMD3(x: 0, y: 0.4, z: -1.5)
 					let leftHand = hands.findEntity(named: "LeftHand")
 					let rightHand = hands.findEntity(named: "RightHand")
 					hand.setHandEntity(leftHand: leftHand!, rightHand: rightHand!)
@@ -51,7 +49,7 @@ struct ImmersiveView: View {
 			RealityView { content, attachments in
 				let ent = Entity()
 				ent.scale = [4.0, 4.0, 4.0]
-				ent.position = SIMD3(x: 0, y: 1.5, z: -2)
+				ent.position = SIMD3(x: 0, y: 1.9, z: -2.45)
 				ent.generateCollisionShapes(recursive: true)
 				content.add(ent)
 				if let textAttachement = attachments.entity(for: "text_view") {
@@ -147,7 +145,7 @@ extension ImmersiveView: GestureDelegate {
 				viewModel.addPoint(pnt)
 			}
 		case .Fired:
-			viewModel.clearAllPoint()
+//			viewModel.clearAllPoint()
 			break
 		case .Moved2D:
 			break

@@ -55,26 +55,25 @@ class Gesture_Draw: GestureBase
 	}
 	
 	func isPencilPose() -> Bool {	// make pencil gesture ==> touch thumb tip to the second joint of index finger
-//		if handJoints.count > 0 { // gesture of single hands
+		if handJoints.count > 0 {
 			if isStraight(hand: .right, finger: .index) {
 				if isNear(pos1: jointPosition(hand: .right, finger: .thumb, joint: .tip), pos2: jointPosition(hand: .right, finger: .index, joint: .pip), value: checkDistance) {
 					return true
 				}
 			}
-//		}
+		}
 		return false
 	}
 
 	func isClearCanvasPose() -> Bool {	// open hand
-//		if handJoints.count > 0 { // gesture of single hands
+		if handJoints.count > 0 {
 			var check = 0
-//			if isStraight(hand: .right, finger: .thumb){ check += 1 }
 			if isStraight(hand: .right, finger: .index){ check += 1 }
 			if isStraight(hand: .right, finger: .middle){ check += 1 }
 			if isStraight(hand: .right, finger: .ring){ check += 1 }
 			if isStraight(hand: .right, finger: .little){ check += 1 }
 			if check == 4 { return true }
-//		}
+		}
 		return false
 	}
 

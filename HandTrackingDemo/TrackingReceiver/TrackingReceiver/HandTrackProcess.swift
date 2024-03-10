@@ -98,11 +98,11 @@ class HandTrackProcess {
 				}
 				
 				do {
-//					if rightAnchor != nil && leftAnchor != nil {
-//						fingerJoints1 = try getFingerJoints(with: rightAnchor)
-//						fingerJoints2 = try getFingerJoints(with: leftAnchor)
-//					}
-//					else {
+					if rightAnchor != nil && leftAnchor != nil {
+						fingerJoints1 = try getFingerJoints(with: rightAnchor)
+						fingerJoints2 = try getFingerJoints(with: leftAnchor)
+					}
+					else {
 						if rightAnchor != nil {
 							fingerJoints1 = try getFingerJoints(with: rightAnchor)
 							fingerJoints2 = []
@@ -111,7 +111,7 @@ class HandTrackProcess {
 							fingerJoints2 = try getFingerJoints(with: leftAnchor)
 							fingerJoints1 = []
 						}
-//					}
+					}
 				} catch {
 					NSLog("Error")
 				}
@@ -131,7 +131,7 @@ class HandTrackProcess {
 				switch event {
 				case .authorizationChanged(let type, let status):
 					if type == .handTracking && status != .allowed {
-						// Stop, ask the user to grant hand tracking authorization again in Settings.
+						print("Ask the user to grant hand tracking authorization in Settings")
 					}
 				@unknown default:
 					print("Session event \(event)")

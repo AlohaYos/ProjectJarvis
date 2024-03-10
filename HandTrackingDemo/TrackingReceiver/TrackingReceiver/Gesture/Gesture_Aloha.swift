@@ -67,7 +67,7 @@ class Gesture_Aloha: GestureBase
 	}
 	
 	func isShakaPose() -> Bool {
-//		if HandTrackProcess.handJoints.count > 0 { // gesture of single hands
+		if HandTrackProcess.handJoints.count > 0 {
 			var check = 0
 			if isStraight(hand: .right, finger: .thumb){ check += 1 }
 			if isBend(hand: .right, finger: .index){ check += 1 }
@@ -75,7 +75,7 @@ class Gesture_Aloha: GestureBase
 			if isBend(hand: .right, finger: .ring){ check += 1 }
 			if isStraight(hand: .right, finger: .little){ check += 1 }
 			if check == 5 { return true }
-//		}
+		}
 		return false
 	}
 }
