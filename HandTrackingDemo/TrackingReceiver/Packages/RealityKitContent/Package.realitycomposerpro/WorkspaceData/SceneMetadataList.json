@@ -61,6 +61,24 @@
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "362ABFED-B01D-4467-84B0-77A607683F4F",
+        "Root",
+        "LeftHand"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "362ABFED-B01D-4467-84B0-77A607683F4F",
+        "Root",
+        "RightHand"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },

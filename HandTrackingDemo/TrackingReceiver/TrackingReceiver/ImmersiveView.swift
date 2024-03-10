@@ -67,13 +67,6 @@ struct ImmersiveView: View {
 						.foregroundColor(Color.white)
 				}
 			}
-//			RealityView { content in
-//				let handEntity = handModel.setupContentEntity()
-//				content.add(handEntity)
-//				handModel.setupBones()
-//				let modelEntity = viewModel.setupContentEntity()
-//				content.add(modelEntity)
-//			}
 		}	// ZStack
 		.task {
 			await handTrackProcess.handTrackingStart()
@@ -81,7 +74,9 @@ struct ImmersiveView: View {
 			gestureAloha = Gesture_Aloha(delegate: self)
 		}
 		.task {
-			textLog("publishHandTrackingUpdates")
+			await handTrackProcess.monitorSessionEvents()
+		}
+		.task {
 			// Hand tracking loop
 			await handTrackProcess.publishHandTrackingUpdates(updateJob: { (fingerJoints, updates) -> Void in
 				DispatchQueue.main.async {
@@ -89,21 +84,12 @@ struct ImmersiveView: View {
 						displayHandJoints(handJoints: fingerJoints)
 					}
 					else {
-						do {
-//							if (handTrackProcess.handAnchorUpdate != nil) {
-							hand.show(anchorUpdate:updates!)
-//							}
-						} catch {
-							NSLog("Error")
-						}
-
+						hand.show(anchorUpdate:updates!)
 					}
 					gestureDraw?.checkGesture(handJoints: fingerJoints)
+					gestureAloha?.checkGesture(handJoints: fingerJoints)
 				}
 			})
-		}
-		.task {
-			await handTrackProcess.monitorSessionEvents()
 		}
 	}
 	
@@ -161,7 +147,7 @@ extension ImmersiveView: GestureDelegate {
 				viewModel.addPoint(pnt)
 			}
 		case .Fired:
-			// clear canvas
+			viewModel.clearAllPoint()
 			break
 		case .Moved2D:
 			break
@@ -181,15 +167,18 @@ extension ImmersiveView: GestureDelegate {
 		case .Moved3D:
 			viewModel.setPoints(event.location as! [SIMD3<Scalar>?])
 		case .Fired:
-			if let pnt = event.location[0] as? SIMD3<Scalar> {
-				viewModel.addPoint(pnt)
-			}
+			viewModel.clearAllPoint()
+//			if let pnt = event.location[0] as? SIMD3<Scalar> {
+//				viewModel.addPoint(pnt)
+//			}
 			break
 		case .Moved2D:
 			break
 		case .Began:
+			viewModel.beginAloha()
 			break
 		case .Ended:
+			viewModel.endAloha()
 			break
 		case .Canceled:
 			break
@@ -207,31 +196,6 @@ extension ImmersiveView {
 		DispatchQueue.main.async {
 			logText = message+"\r"+logText
 		}
-	}
-
-	func triangleCenterWithAxis(joint1:SIMD3<Scalar>?, joint2:SIMD3<Scalar>?, joint3:SIMD3<Scalar>?) -> simd_float4x4? {
-		guard
-			let j1 = joint1,
-			let j2 = joint2,
-			let j3 = joint3
-		else {
-			return nil
-		}
-		// center of triangle
-		let h1 = (j1+j2) / 2	// half point of j1 & j2
-		let ct = (h1+j3) / 2	// center point (half point of h1 & j3)
-
-		let xAxis = normalize(j2 - j1)
-		let yAxis = normalize(j3 - h1)
-		let zAxis = normalize(cross(xAxis, yAxis))
-
-		let triangleCenterWorldTransform = simd_matrix(
-			SIMD4(xAxis.x, xAxis.y, xAxis.z, 0),
-			SIMD4(yAxis.x, yAxis.y, yAxis.z, 0),
-			SIMD4(zAxis.x, zAxis.y, zAxis.z, 0),
-			SIMD4(ct.x, ct.y, ct.z, 1)
-		)
-		return triangleCenterWorldTransform
 	}
 }
 

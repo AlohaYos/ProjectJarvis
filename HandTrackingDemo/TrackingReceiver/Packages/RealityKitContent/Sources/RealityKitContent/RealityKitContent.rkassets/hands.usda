@@ -13,6 +13,9 @@ reorder rootPrims = ["Root", "SnookerTable_Greenframe16"]
 def Xform "Root"
 {
     reorder nameChildren = ["Group_ball", "Group_table", "cue", "Table_Placeholder", "Sound", "ClearMaterial", "Material_tableBase", "Material_tableBaseLogo", "Material_tablePlaceholder", "LeftHand", "RightHand", "BallSurfaceMaterial", "MaterialBall00", "BallMaterial00", "Capsule_1", "Capsule_2", "Capsule_3", "Capsule_4"]
+    float3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
     def Xform "LeftHand"
     {
         quatf xformOp:orient = (1, 0, 0, 0)
@@ -77,12 +80,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -145,12 +150,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -213,12 +220,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -281,12 +290,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -349,12 +360,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -417,12 +430,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -485,12 +500,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -553,12 +570,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -621,12 +640,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -689,12 +710,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -757,12 +780,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -825,12 +850,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -893,12 +920,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -961,12 +990,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1029,12 +1060,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1097,12 +1130,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1165,12 +1200,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1233,12 +1270,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1301,12 +1340,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1369,12 +1410,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1437,12 +1480,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1505,12 +1550,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1573,12 +1620,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1641,12 +1690,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1709,12 +1760,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1777,12 +1830,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1845,12 +1900,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1921,12 +1978,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -1989,12 +2048,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2057,12 +2118,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2125,12 +2188,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2193,12 +2258,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2261,12 +2328,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2329,12 +2398,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2397,12 +2468,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2465,12 +2538,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2533,12 +2608,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2601,12 +2678,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2669,12 +2748,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2737,12 +2818,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2805,12 +2888,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2873,12 +2958,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -2941,12 +3028,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3009,12 +3098,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3077,12 +3168,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3145,12 +3238,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3213,12 +3308,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3281,12 +3378,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3349,12 +3448,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3417,12 +3518,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3485,12 +3588,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3553,12 +3658,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3621,12 +3728,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }
@@ -3689,12 +3798,14 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.03, 0.049999997, 0.030000001)
-                    token shapeType = "Box"
+                    float3 extent = (0.03, 0.04, 0.03)
+                    float height = 0.04
+                    float radius = 0.015
+                    token shapeType = "Capsule"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 0, -4.656613e-10)
+                        float3 position = (0, 0, 0)
                     }
                 }
             }

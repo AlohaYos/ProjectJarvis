@@ -21,6 +21,5 @@ struct TrackingReceiverApp: App {
 			ImmersiveView()
 		}
 		.immersionStyle(selection: .constant(.progressive), in: .progressive)
-//		.immersionStyle(selection: .constant(.mixed), in: .mixed)
     }
 }
