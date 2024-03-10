@@ -11,7 +11,6 @@
 		FF2191422A9F491100352445 /* HandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2191412A9F491100352445 /* HandModel.swift */; };
 		FF42704E2AA19EC1001A0627 /* GestureBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42704D2AA19EC1001A0627 /* GestureBase.swift */; };
 		FF4270502AA1B9FD001A0627 /* Gesture_Aloha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42704F2AA1B9FD001A0627 /* Gesture_Aloha.swift */; };
-		FF4270542AA1CE13001A0627 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4270532AA1CE13001A0627 /* ViewModel.swift */; };
 		FF7E199B2ABA8B2A007AD74A /* Gesture_Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E199A2ABA8B2A007AD74A /* Gesture_Draw.swift */; };
 		FFCD12EC2A9F462C0099424C /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = FFCD12EB2A9F462C0099424C /* RealityKitContent */; };
 		FFCD12EE2A9F462C0099424C /* TrackingReceiverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCD12ED2A9F462C0099424C /* TrackingReceiverApp.swift */; };
@@ -19,6 +18,8 @@
 		FFCD12F22A9F462C0099424C /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCD12F12A9F462C0099424C /* ImmersiveView.swift */; };
 		FFCD12F42A9F463D0099424C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFCD12F32A9F463D0099424C /* Assets.xcassets */; };
 		FFCD12F72A9F463D0099424C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFCD12F62A9F463D0099424C /* Preview Assets.xcassets */; };
+		FFE267FF2B9D76FE00489117 /* Hands.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE267FE2B9D76FE00489117 /* Hands.swift */; };
+		FFE268032B9D7F1100489117 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE268022B9D7F1100489117 /* ViewModel.swift */; };
 		FFF33C702AA013CE0069FA3E /* HandTrackProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF33C6F2AA013CE0069FA3E /* HandTrackProcess.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +28,6 @@
 		FF2191412A9F491100352445 /* HandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandModel.swift; sourceTree = "<group>"; };
 		FF42704D2AA19EC1001A0627 /* GestureBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureBase.swift; sourceTree = "<group>"; };
 		FF42704F2AA1B9FD001A0627 /* Gesture_Aloha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gesture_Aloha.swift; sourceTree = "<group>"; };
-		FF4270532AA1CE13001A0627 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FF7E199A2ABA8B2A007AD74A /* Gesture_Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gesture_Draw.swift; sourceTree = "<group>"; };
 		FFCD12E62A9F462C0099424C /* TrackingReceiver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingReceiver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFCD12EA2A9F462C0099424C /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
@@ -37,6 +37,8 @@
 		FFCD12F32A9F463D0099424C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFCD12F62A9F463D0099424C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FFCD12F82A9F463D0099424C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFE267FE2B9D76FE00489117 /* Hands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hands.swift; sourceTree = "<group>"; };
+		FFE268022B9D7F1100489117 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FFF33C6F2AA013CE0069FA3E /* HandTrackProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandTrackProcess.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +67,8 @@
 		FF4270522AA1CDE6001A0627 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				FF4270532AA1CE13001A0627 /* ViewModel.swift */,
+				FFE268022B9D7F1100489117 /* ViewModel.swift */,
+				FFE267FE2B9D76FE00489117 /* Hands.swift */,
 				FF2191412A9F491100352445 /* HandModel.swift */,
 			);
 			path = Presentation;
@@ -203,14 +206,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFF33C702AA013CE0069FA3E /* HandTrackProcess.swift in Sources */,
-				FF4270542AA1CE13001A0627 /* ViewModel.swift in Sources */,
 				FF4270502AA1B9FD001A0627 /* Gesture_Aloha.swift in Sources */,
+				FFE267FF2B9D76FE00489117 /* Hands.swift in Sources */,
 				FFCD12F02A9F462C0099424C /* ContentView.swift in Sources */,
 				FF2191422A9F491100352445 /* HandModel.swift in Sources */,
 				FF7E199B2ABA8B2A007AD74A /* Gesture_Draw.swift in Sources */,
 				FF2191402A9F475F00352445 /* HandTrackFake.swift in Sources */,
 				FFCD12EE2A9F462C0099424C /* TrackingReceiverApp.swift in Sources */,
 				FF42704E2AA19EC1001A0627 /* GestureBase.swift in Sources */,
+				FFE268032B9D7F1100489117 /* ViewModel.swift in Sources */,
 				FFCD12F22A9F462C0099424C /* ImmersiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,12 +346,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=xros*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TrackingReceiver/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=xros*]" = P8RDT88SUS;
+				DEVELOPMENT_TEAM = P8RDT88SUS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TrackingReceiver/Info.plist;
@@ -360,7 +363,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.newtonjapan.TrackingReceiver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=xros*]" = TrackingReceiverDev;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -373,12 +375,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=xros*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TrackingReceiver/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=xros*]" = P8RDT88SUS;
+				DEVELOPMENT_TEAM = P8RDT88SUS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TrackingReceiver/Info.plist;
@@ -391,7 +392,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.newtonjapan.TrackingReceiver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=xros*]" = TrackingReceiverDev;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

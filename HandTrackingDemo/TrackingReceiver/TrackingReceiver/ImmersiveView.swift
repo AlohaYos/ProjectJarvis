@@ -16,6 +16,7 @@ var gestureDraw: Gesture_Draw?
 
 struct ImmersiveView: View {
 	let handTrackProcess: HandTrackProcess = HandTrackProcess()
+	let hand = Hand()
 	let handModel = HandModel()
 	let viewModel = ViewModel()
 	@State var logText: String = "Ready..."
@@ -30,9 +31,22 @@ struct ImmersiveView: View {
 		ZStack {
 			RealityView { content in
 				if let scene = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
-					scene.position = SIMD3(x: 0, y: 0.8, z: -1.5)
+					scene.position = SIMD3(x: 0, y: 0.4, z: -1.5)
 					content.add(scene)
 				}
+				if let hands = try? await Entity(named: "hands", in: realityKitContentBundle) {
+//					hands.position = SIMD3(x: 0, y: 0.4, z: -1.5)
+					let leftHand = hands.findEntity(named: "LeftHand")
+					let rightHand = hands.findEntity(named: "RightHand")
+					hand.setHandEntity(leftHand: leftHand!, rightHand: rightHand!)
+					let handEntify = hand.setupContentEntity()
+					content.add(handEntify)
+				}
+				let handEntity = handModel.setupContentEntity()
+				content.add(handEntity)
+				handModel.setupBones()
+				let modelEntity = viewModel.setupContentEntity()
+				content.add(modelEntity)
 			}
 			RealityView { content, attachments in
 				let ent = Entity()
@@ -53,24 +67,39 @@ struct ImmersiveView: View {
 						.foregroundColor(Color.white)
 				}
 			}
-			RealityView { content in
-				let handEntity = handModel.setupContentEntity()
-				content.add(handEntity)
-				handModel.setupBones()
-				let modelEntity = viewModel.setupContentEntity()
-				content.add(modelEntity)
-			}
+//			RealityView { content in
+//				let handEntity = handModel.setupContentEntity()
+//				content.add(handEntity)
+//				handModel.setupBones()
+//				let modelEntity = viewModel.setupContentEntity()
+//				content.add(modelEntity)
+//			}
 		}	// ZStack
 		.task {
 			await handTrackProcess.handTrackingStart()
 			gestureDraw = Gesture_Draw(delegate: self)
+			gestureAloha = Gesture_Aloha(delegate: self)
 		}
 		.task {
 			textLog("publishHandTrackingUpdates")
 			// Hand tracking loop
-			await handTrackProcess.publishHandTrackingUpdates(updateJob: { (fingerJoints) -> Void in
-				displayHandJoints(handJoints: fingerJoints)
-				gestureDraw?.checkGesture(handJoints: fingerJoints)
+			await handTrackProcess.publishHandTrackingUpdates(updateJob: { (fingerJoints, updates) -> Void in
+				DispatchQueue.main.async {
+					if handTrackFake.enableFake == true {
+						displayHandJoints(handJoints: fingerJoints)
+					}
+					else {
+						do {
+//							if (handTrackProcess.handAnchorUpdate != nil) {
+							hand.show(anchorUpdate:updates!)
+//							}
+						} catch {
+							NSLog("Error")
+						}
+
+					}
+					gestureDraw?.checkGesture(handJoints: fingerJoints)
+				}
 			})
 		}
 		.task {
@@ -149,10 +178,6 @@ extension ImmersiveView: GestureDelegate {
 	// Aloha
 	func handle_gestureAloha(event: GestureDelegateEvent) {
 		switch event.type {
-		case .Moved4D:
-			if let pnt = event.location[0] as? simd_float4x4 {
-				viewModel.moveGlove(pnt)
-			}
 		case .Moved3D:
 			viewModel.setPoints(event.location as! [SIMD3<Scalar>?])
 		case .Fired:

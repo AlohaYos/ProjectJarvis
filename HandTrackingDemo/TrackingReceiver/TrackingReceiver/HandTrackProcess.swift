@@ -43,6 +43,7 @@ class HandTrackProcess {
 	let session = ARKitSession()
 	var handTracking = HandTrackingProvider()
 	static var handJoints: [[[SIMD3<Scalar>?]]] = []			// array of fingers of both hand (0:right hand, 1:left hand)
+	var handAnchorUpdate:AnchorUpdate<HandAnchor>!
 
 	func handTrackingStart() async {
 		if handTrackFake.enableFake == false {
@@ -59,7 +60,7 @@ class HandTrackProcess {
 	}
 
 	// Hand tracking loop
-	func publishHandTrackingUpdates(updateJob: @escaping(([[[SIMD3<Scalar>?]]]) -> Void)) async {
+	func publishHandTrackingUpdates(updateJob: @escaping(([[[SIMD3<Scalar>?]]], AnchorUpdate<HandAnchor>?) -> Void)) async {
 
 		// Fake HandTracking
 		if handTrackFake.enableFake {
@@ -68,13 +69,15 @@ class HandTrackProcess {
 					let dt = handTrackFake.receiveHandTrackData()
 					HandTrackProcess.handJoints = dt
 					// CALLBACK
-					updateJob(dt)
+					updateJob(dt, nil)
 				}
 			}
 		}
 		// Real HandTracking
 		else {
 			for await update in handTracking.anchorUpdates {
+				handAnchorUpdate = update
+				
 				var rightAnchor: HandAnchor?
 				var leftAnchor:  HandAnchor?
 				var fingerJoints1 = [[SIMD3<Scalar>?]]()
@@ -87,21 +90,19 @@ class HandTrackProcess {
 					
 					if anchor.chirality == .left {
 						leftAnchor = anchor
-						saveHandAnchorData(anchor: anchor, whichHand: 1)
 					} else if anchor.chirality == .right {
 						rightAnchor = anchor
-						saveHandAnchorData(anchor: anchor, whichHand: 0)
 					}
 				default:
 					break
 				}
 				
 				do {
-					if rightAnchor != nil && leftAnchor != nil {
-						fingerJoints1 = try getFingerJoints(with: rightAnchor)
-						fingerJoints2 = try getFingerJoints(with: leftAnchor)
-					}
-					else {
+//					if rightAnchor != nil && leftAnchor != nil {
+//						fingerJoints1 = try getFingerJoints(with: rightAnchor)
+//						fingerJoints2 = try getFingerJoints(with: leftAnchor)
+//					}
+//					else {
 						if rightAnchor != nil {
 							fingerJoints1 = try getFingerJoints(with: rightAnchor)
 							fingerJoints2 = []
@@ -110,7 +111,7 @@ class HandTrackProcess {
 							fingerJoints2 = try getFingerJoints(with: leftAnchor)
 							fingerJoints1 = []
 						}
-					}
+//					}
 				} catch {
 					NSLog("Error")
 				}
@@ -118,7 +119,7 @@ class HandTrackProcess {
 				if rightAnchor != nil || leftAnchor != nil {
 					HandTrackProcess.handJoints = [fingerJoints1, fingerJoints2]
 					// CALLBACK
-					updateJob([fingerJoints1, fingerJoints2])
+					updateJob([fingerJoints1, fingerJoints2], update)
 				}
 			}
 		}
@@ -166,84 +167,5 @@ class HandTrackProcess {
 		return []
 	}
 
-	// MARK: Save HandAnchor data
-	struct PosCell: Encodable {	// 1 line
-		var x: Float
-		var y: Float
-		var z: Float
-		var w: Float
-	}
-	struct JointSIMD4: Encodable {	// 4 lines in one joint
-		var matrix: Array<PosCell>
-	}
-	struct HandAnchorJson: Encodable {
-		var chirality:String
-		var wristTransform:JointSIMD4
-		var joints:[JointSIMD4]	// all joints in one hand
-	}
-
-	func saveHandAnchorData(anchor: HandAnchor?, whichHand:Int /* right=0, left=1 */) {
-		
-		guard let ac = anchor else { return }
-
-		if let joints = ac.handSkeleton?.allJoints {
-			var jd: [JointSIMD4] = []
-			let chirality: HandAnchor.Chirality = ac.chirality
-			let wristTransform: simd_float4x4 = ac.originFromAnchorTransform
-			let cell0 = PosCell(x: wristTransform.columns.0.x,
-								y: wristTransform.columns.0.y,
-								z: wristTransform.columns.0.z,
-								w: wristTransform.columns.0.w)
-			let cell1 = PosCell(x: wristTransform.columns.1.x,
-								y: wristTransform.columns.1.y,
-								z: wristTransform.columns.1.z,
-								w: wristTransform.columns.1.w)
-			let cell2 = PosCell(x: wristTransform.columns.2.x,
-								y: wristTransform.columns.2.y,
-								z: wristTransform.columns.2.z,
-								w: wristTransform.columns.2.w)
-			let cell3 = PosCell(x: wristTransform.columns.3.x,
-								y: wristTransform.columns.3.y,
-								z: wristTransform.columns.3.z,
-								w: wristTransform.columns.3.w)
-
-			for index in 0...joints.count-1 {
-				let val = joints[index].anchorFromJointTransform
-				let cell0 = PosCell(x: val.columns.0.x,
-									y: val.columns.0.y,
-									z: val.columns.0.z,
-									w: val.columns.0.w)
-				let cell1 = PosCell(x: val.columns.1.x,
-									y: val.columns.1.y,
-									z: val.columns.1.z,
-									w: val.columns.1.w)
-				let cell2 = PosCell(x: val.columns.2.x,
-									y: val.columns.2.y,
-									z: val.columns.2.z,
-									w: val.columns.2.w)
-				let cell3 = PosCell(x: val.columns.3.x,
-									y: val.columns.3.y,
-									z: val.columns.3.z,
-									w: val.columns.3.w)
-				let oneJoint = JointSIMD4(matrix: [cell0, cell1, cell2, cell3])	// one joint
-				jd.append(oneJoint)
-			}
-			// save to file
-			let wt = JointSIMD4(matrix: [cell0, cell1, cell2, cell3])
-
-			let jsonData = HandAnchorJson(chirality: chirality.description,
-										  wristTransform: wt,
-										  joints: jd)
-			// encode & print to console
-			let encoder = JSONEncoder()
-			encoder.outputFormatting = .prettyPrinted
-			do {
-				let data = try encoder.encode(jsonData)
-				NSLog(String(data: data , encoding: .utf8)!)
-			} catch {
-				NSLog("Error")
-			}
-		}
-	}
 }
 

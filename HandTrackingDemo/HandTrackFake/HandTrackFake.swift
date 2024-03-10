@@ -18,7 +18,7 @@ import Vision
 typealias Scalar = Float
 
 class HandTrackFake: NSObject {
-	var enableFake = true
+	var enableFake = false
 	var rotateHands = false
 
 	private let serviceName = "HandTrackFake"
