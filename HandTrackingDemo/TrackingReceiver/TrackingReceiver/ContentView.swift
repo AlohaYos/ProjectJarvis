@@ -28,10 +28,10 @@ struct ContentView: View {
 				.toggleStyle(.button)
 				.padding(.top, 10)
 				.opacity(0.3)
-			Toggle("Hand Rotate", isOn: $rotateHands)
-				.padding(.top, 10)
-				.padding(.bottom, 10)
-				.opacity(0.3)
+//			Toggle("Hand Rotate", isOn: $rotateHands)
+//				.padding(.top, 10)
+//				.padding(.bottom, 10)
+//				.opacity(0.3)
 		}
 		.onChange(of: showImmersiveSpace) { _, newValue in
 			Task {

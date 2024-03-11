@@ -34,14 +34,14 @@ struct ImmersiveView: View {
 					content.add(scene)
 				}
 				if let hands = try? await Entity(named: "hands", in: realityKitContentBundle) {
-					let leftHand = hands.findEntity(named: "LeftHand")
-					let rightHand = hands.findEntity(named: "RightHand")
-					hand.setHandEntity(leftHand: leftHand!, rightHand: rightHand!)
-					let handEntify = hand.setupContentEntity()
-					if handTrackFake.enableFake == true {
-						leftHand?.isEnabled = false
-						rightHand?.isEnabled = false
+					if let leftHand = hands.findEntity(named: "LeftHand"), let rightHand = hands.findEntity(named: "RightHand") {
+						hand.setHandEntity(leftHand: leftHand, rightHand: rightHand)
+						if handTrackFake.enableFake == true {
+							leftHand.isEnabled = false
+							rightHand.isEnabled = false
+						}
 					}
+					let handEntify = hand.setupContentEntity()
 					content.add(handEntify)
 				}
 				let handEntity = handModel.setupContentEntity()

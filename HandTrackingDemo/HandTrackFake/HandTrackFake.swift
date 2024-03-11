@@ -18,7 +18,7 @@ import Vision
 typealias Scalar = Float
 
 class HandTrackFake: NSObject {
-	var enableFake = true
+	var enableFake = false
 	var rotateHands = false
 	var zDepth: Float = 0.0
 
@@ -431,7 +431,6 @@ struct HandTrackJson3D: Codable {
 						continue
 					}
 					if let pos = dt3D[hand][finger][joint] {
-//						let rotatedVector = rotateZ * pos
 						let rotatedVector = rotateZ * rotateY * pos
 						let shiftedVector = shift3D(rotatedVector)
 						handJoints[hand][finger][joint] = shiftedVector
