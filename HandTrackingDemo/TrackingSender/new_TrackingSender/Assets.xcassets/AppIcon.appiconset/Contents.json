@@ -1,9 +1,9 @@
 {
   "images" : [
     {
-      "filename" : "hand.png",
-      "idiom" : "vision",
-      "scale" : "2x"
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
     }
   ],
   "info" : {

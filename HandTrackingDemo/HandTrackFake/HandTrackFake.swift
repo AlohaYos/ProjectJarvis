@@ -18,7 +18,7 @@ import Vision
 typealias Scalar = Float
 
 class HandTrackFake: NSObject {
-	var enableFake = false
+	var enableFake = true
 	var rotateHands = false
 
 	private let serviceName = "HandTrackFake"
@@ -33,6 +33,10 @@ class HandTrackFake: NSObject {
 	var sessionState: MCSessionState = .notConnected
 	
 	override init() {
+		super.init()
+	}
+	init(enableFake:Bool) {
+		self.enableFake = enableFake
 		super.init()
 	}
 }
@@ -82,7 +86,7 @@ extension HandTrackFake : MCSessionDelegate {
 		do {
 			try session.send(sendStr.data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
 		} catch let error {
-			print(error.localizedDescription)
+//			print(error.localizedDescription)
 		}
 	}
 
@@ -94,6 +98,7 @@ extension HandTrackFake : MCSessionDelegate {
 				let handCount = dt3D.handJoints.count
 				if handCount>0 {
 					fingerJoints1 = dt3D.handJoints[0]
+					print("\(handTrackFake.currentJsonString)")
 				}
 				if handCount>1 {
 					fingerJoints2 = dt3D.handJoints[1]
@@ -127,7 +132,7 @@ extension HandTrackFake : MCSessionDelegate {
 			message = "\(peerID.displayName) status unknown."
 		}
 		DispatchQueue.main.async {
-			print(message)
+//			print(message)
 		}
 
 	}
@@ -147,12 +152,12 @@ extension HandTrackFake : MCSessionDelegate {
 extension HandTrackFake: MCNearbyServiceAdvertiserDelegate {
 	
 	func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-		print("receive invitation from \(peerID.description)")
+//		print("receive invitation from \(peerID.description)")
 		invitationHandler(true, session)
 	}
 	
 	func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
-		print(error.localizedDescription)
+//		print(error.localizedDescription)
 	}
 }
 
@@ -164,11 +169,11 @@ extension HandTrackFake: MCNearbyServiceBrowserDelegate {
 	}
 
 	func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
-		print(error.localizedDescription)
+//		print(error.localizedDescription)
 	}
 	
 	func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-		print("lost peer")
+//		print("lost peer")
 	}
 }
 
@@ -305,7 +310,7 @@ struct HandTrackJson2D: Codable {
 							continue
 						}
 						if let dt2D = org[hand][finger][joint] {
-							var dtFake = VNRecognizedPointFake(identifier: dt2D.identifier.rawValue, confidence: dt2D.confidence, x: dt2D.x, y: dt2D.y, location: dt2D.location)
+							let dtFake = VNRecognizedPointFake(identifier: dt2D.identifier.rawValue, confidence: dt2D.confidence, x: dt2D.x, y: dt2D.y, location: dt2D.location)
 							hj[hand][finger][joint] = dtFake
 						}
 					}
@@ -330,7 +335,9 @@ struct HandTrackJson3D: Codable {
 
 	var handJoints: [[[SIMD3<Scalar>?]]] = []			// array of fingers of both hand (0:right hand, 1:left hand)
 	var rotateHands: Bool = false
-	
+	var offset3D:SIMD3<Scalar> = SIMD3(0.5, 0.0, -1.0)
+//	var offset3D:SIMD3<Scalar> = SIMD3(0.5, 0.4, -2.25)	// value for Gesture_Cue
+
 	// IN : 3D data
 	init(handTrackData: [[[SIMD3<Scalar>?]]]) {
 		handJoints = handTrackData
@@ -434,8 +441,12 @@ struct HandTrackJson3D: Codable {
 		return handJoints
 	}
 
+	func setOffset3D(x:Float, y:Float, z:Float) {
+		var offset3D:SIMD3<Scalar> = SIMD3(x: x, y: y, z: z)
+	}
+	
 	func shift3D(_ pos: SIMD3<Scalar>) -> SIMD3<Scalar> {
-		return simd_float3(pos.x+0.5, pos.y+1.0, pos.z-1.65)
+		return simd_float3(pos.x+offset3D.x, pos.y+offset3D.y, pos.z+offset3D.z)
 	}
 
 	// Convert VisionKit coordinate on iOS -> world coordinate on visionOS
@@ -445,6 +456,10 @@ struct HandTrackJson3D: Codable {
 			pp.x = -pp.x
 			pp.y = -pp.y
 		}
+
+		let y_shift:Double = 0.5
+		pp.y += y_shift
+
 		return SIMD3(x: Float(-pp.x), y: (Float(pp.y)), z: Float(0.0))
 	}
 
@@ -472,6 +487,7 @@ struct HandTrackJson3D: Codable {
 	var jsonStr: String {
 		var jsonString = ""
 		let encoder = JSONEncoder()
+		//		encoder.outputFormatting = .prettyPrinted
 		
 		do {
 			let jsonData = try encoder.encode(self)

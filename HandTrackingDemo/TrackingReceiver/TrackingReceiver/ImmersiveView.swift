@@ -38,6 +38,10 @@ struct ImmersiveView: View {
 					let rightHand = hands.findEntity(named: "RightHand")
 					hand.setHandEntity(leftHand: leftHand!, rightHand: rightHand!)
 					let handEntify = hand.setupContentEntity()
+					if handTrackFake.enableFake == true {
+						leftHand?.isEnabled = false
+						rightHand?.isEnabled = false
+					}
 					content.add(handEntify)
 				}
 				let handEntity = handModel.setupContentEntity()
