@@ -11,6 +11,7 @@ import RealityKitContent
 struct ContentView: View {
 
 	@State private var showImmersiveSpace = false
+	@State private var remoteHands = false
 	@State private var rotateHands = false
 
 	@Environment(\.openImmersiveSpace) var openImmersiveSpace
@@ -28,6 +29,10 @@ struct ContentView: View {
 				.toggleStyle(.button)
 				.padding(.top, 10)
 				.opacity(0.3)
+			Toggle("Remote Hand", isOn: $remoteHands)
+				.padding(.top, 10)
+				.padding(.bottom, 10)
+				.opacity(0.3)
 //			Toggle("Hand Rotate", isOn: $rotateHands)
 //				.padding(.top, 10)
 //				.padding(.bottom, 10)
@@ -42,6 +47,14 @@ struct ContentView: View {
 					textLog("Dismiss Immersive")
 					await dismissImmersiveSpace()
 				}
+			}
+		}
+		.onChange(of: remoteHands) { _, newValue in
+			if newValue {
+				zDepth = -1.0
+			}
+			else {
+				zDepth = 0.25
 			}
 		}
 		.onChange(of: rotateHands) { _, newValue in

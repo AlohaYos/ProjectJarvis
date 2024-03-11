@@ -12,6 +12,7 @@ import MultipeerConnectivity
 
 var gestureAloha: Gesture_Aloha?
 var gestureDraw: Gesture_Draw?
+var zDepth:Float = 0.25
 
 struct ImmersiveView: View {
 	let handTrackProcess: HandTrackProcess = HandTrackProcess()
@@ -42,12 +43,14 @@ struct ImmersiveView: View {
 						}
 					}
 					let handEntify = hand.setupContentEntity()
+					handEntify.position = SIMD3(x: 0, y: 0.0, z: zDepth)
 					content.add(handEntify)
 				}
 				let handEntity = handModel.setupContentEntity()
 				content.add(handEntity)
 				handModel.setupBones()
 				let modelEntity = viewModel.setupContentEntity()
+				modelEntity.position = SIMD3(x: 0, y: 0.0, z: zDepth)
 				content.add(modelEntity)
 			}
 			RealityView { content, attachments in
