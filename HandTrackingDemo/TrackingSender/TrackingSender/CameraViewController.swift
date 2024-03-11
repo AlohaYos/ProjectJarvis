@@ -12,8 +12,6 @@ import Vision
 
 class CameraViewController: UIViewController {
 
-	@IBOutlet weak var sliderX: UISlider!
-	@IBOutlet weak var sliderY: UISlider!
 	@IBOutlet weak var sliderZ: UISlider!
 	
 	private var gestureProvider: HandTrackingProvider?
@@ -37,14 +35,9 @@ class CameraViewController: UIViewController {
 	}
 	
 	// MARK: Slider Job
-	@IBAction func sliderX_ValueChanged(_ sender: UISlider) {
-		print("X=\(sender.value)")
-	}
-	@IBAction func sliderY_ValueChanged(_ sender: UISlider) {
-		print("Y=\(sender.value)")
-	}
 	@IBAction func sliderZ_ValueChanged(_ sender: UISlider) {
-		print("Z=\(sender.value)")
+//		print("Z=\(sender.value)")
+		handTrackFake.zDepth = sender.value
 	}
 	
 	

@@ -50,16 +50,6 @@ class HandModel {
 		whichHanded = which
 	}
 	
-//	var useFingerCue:Bool = false
-//	var cue:ModelEntity?
-//	func setCueEntity(_ ent: ModelEntity?) {
-//		cue = ent
-//		cue?.physicsBody = PhysicsBodyComponent(massProperties:  .init(mass: 1.0), material: .generate(friction: 0.5, restitution: 0.1), mode: .kinematic)
-//		cue?.generateCollisionShapes(recursive: true)
-//		cue?.name = "cueMini"
-//		contentEntity.addChild(cue!)
-//	}
-//
 	var handDataExist:[Bool] = [false, false]
 
 	func setHandJoints(left: [[SIMD3<Scalar>?]]?, right: [[SIMD3<Scalar>?]]?) {
@@ -96,7 +86,6 @@ class HandModel {
 			for fingerNo in 0...5 {
 				for jointNo in 0...2 {
 					if fingerNo == 5 && jointNo > 1 { continue }
-//					if fingerNo == 5 && jointNo > 0 { continue }
 					var sp:SIMD3<Float>? = [0,0,0]
 					var ep:SIMD3<Float>? = [0,0,0]
 					if fingerNo==5 && jointNo==1 {
@@ -134,11 +123,6 @@ class HandModel {
 
 						if let rectangle:ModelEntity = fingerObj[handNo][fingerNo][jointNo] {
 							rectangle.isEnabled = false
-//							if useFingerCue {
-//								if handNo == whichHanded && fingerNo == 1 && jointNo == 0 {	// 右 人差し指の先端
-//									cue?.isEnabled = rectangle.isEnabled
-//								}
-//							}
 						}
 					}
 				}
@@ -146,7 +130,7 @@ class HandModel {
 		}
 	}
 	
-	func drawBoneBetween(handNo: Int, fingerNo: Int, jointNo: Int,  startPoint: SIMD3<Scalar>?, endPoint: SIMD3<Scalar>?) {	// Note: call from main thread
+	func drawBoneBetween(handNo: Int, fingerNo: Int, jointNo: Int,  startPoint: SIMD3<Scalar>?, endPoint: SIMD3<Scalar>?) {
 		
 		if reentryFlag == true { return }
 		reentryFlag = true
@@ -164,50 +148,29 @@ class HandModel {
 		if var rectangle:ModelEntity = fingerObj[handNo][fingerNo][jointNo] {
 			rectangle.isEnabled = true
 
-//			if useFingerCue {
-//				if handNo == whichHanded && fingerNo == 1 && jointNo == 0 {	// 右 人差し指の先端
-//					if handDataExist[handNo] == false {
-//						rectangle.isEnabled = false
-//					}
-//					cue?.isEnabled = rectangle.isEnabled
-//					rectangle.isEnabled = false
-//					rectangle = cue!
-//				}
-//			}
-//			else
-//			{
-				if hideFingerObject {
-					// opacity = 0.0
-					var material = OcclusionMaterial()
-					rectangle.model?.materials = [material]
-				}
-				else {
-					// opacity = 1.0
-					var material = SimpleMaterial()
-					material.color = .init(tint: .cyan)
-					rectangle.model?.materials = [material]
-				}
-				
-//			}
+			if hideFingerObject {
+				// opacity = 0.0
+				var material = OcclusionMaterial()
+				rectangle.model?.materials = [material]
+			}
+			else {
+				// opacity = 1.0
+				var material = SimpleMaterial()
+				material.color = .init(tint: .cyan)
+				rectangle.model?.materials = [material]
+			}
 
 			let middlePoint = SIMD3(x: (sp.x + ep.x)/2, y: (sp.y + ep.y)/2, z: (sp.z + ep.z)/2)
 			rectangle.setPosition(middlePoint, relativeTo: nil)
 			
 			if handTrackFake.enableFake {
-//				if (useFingerCue) && (handNo == 1 && fingerNo == 1 && jointNo == 0) {
-//					rectangle.setScale(SIMD3(x: 1, y: 1, z: 1) , relativeTo: contentEntity)
-//				}
-//				else
-//				{
-					rectangle.setScale(SIMD3(x: 0.8, y: 0.8, z: size*50) , relativeTo: contentEntity)
-	//				rectangle.setScale(SIMD3(x: 0.5, y: 0.5, z: size*50) , relativeTo: contentEntity)
-//				}
+				rectangle.setScale(SIMD3(x: 0.8, y: 0.8, z: size*50) , relativeTo: contentEntity)
 			}
 			else {
 				rectangle.setScale(SIMD3(x: 0.8, y: 0.8, z: 1.0) , relativeTo: contentEntity)
-//				rectangle.setScale(SIMD3(x: 0.5, y: 0.5, z: 1.0) , relativeTo: contentEntity)
 			}
-			if fingerNo == 5 && jointNo == 1 {	// 掌
+			if fingerNo == 5 && jointNo == 1 {	// palm
+				rectangle.isEnabled = false
 				if var wristPos = handJoints[handNo][HandTrackProcess.WhichFinger.wrist.rawValue][HandTrackProcess.WhichJointNo.top.rawValue],
 				   let indexPos = handJoints[handNo][HandTrackProcess.WhichFinger.index.rawValue][HandTrackProcess.WhichJointNo.third.rawValue],
 				   let littlePos = handJoints[handNo][HandTrackProcess.WhichFinger.ring.rawValue][HandTrackProcess.WhichJointNo.third.rawValue]
@@ -228,15 +191,14 @@ class HandModel {
 		for handNo in 0...1 {
 			for fingerNo in 0...5 {
 				for jointNo in 0...2 {
-					if fingerNo == 5 && jointNo > 1 { continue }	// fingerNo==5 and jointNo=1 は掌
-//					if fingerNo == 5 && jointNo > 0 { continue }
+					if fingerNo == 5 && jointNo > 1 { continue }	// fingerNo==5 and jointNo=1  palm
 
 					var material = SimpleMaterial()
 					material.color = .init(tint: .cyan)
 
 					let boneThickness:Float = 0.025
 					var rectangle:ModelEntity!
-					if fingerNo == 5 && jointNo == 1 {	// 掌
+					if fingerNo == 5 && jointNo == 1 {	// palm
 						rectangle = ModelEntity(mesh: .generateBox(size: SIMD3(x: boneThickness*2, y: boneThickness*2, z: boneThickness*0.25), cornerRadius: 50.0 ), materials: [material])
 					}
 					else {
@@ -244,7 +206,6 @@ class HandModel {
 					}
 					rectangle.physicsBody = PhysicsBodyComponent(massProperties:  .init(mass: 10.0), material: .generate(friction: 0.5, restitution: 0.1), mode: .kinematic)
 					rectangle.generateCollisionShapes(recursive: true)
-//					rectangle.collision?.filter = fingerCollisionFilter
 
 					contentEntity.addChild(rectangle)
 					fingerObj[handNo][fingerNo][jointNo] = rectangle

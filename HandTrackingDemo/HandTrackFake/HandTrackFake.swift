@@ -20,6 +20,7 @@ typealias Scalar = Float
 class HandTrackFake: NSObject {
 	var enableFake = true
 	var rotateHands = false
+	var zDepth: Float = 0.0
 
 	private let serviceName = "HandTrackFake"
 	private var advertiserName = "HandTrackFakeSender"
@@ -446,7 +447,6 @@ struct HandTrackJson3D: Codable {
 	}
 	
 	func shift3D(_ pos: SIMD3<Scalar>) -> SIMD3<Scalar> {
-//		var offset3D:SIMD3<Scalar> = SIMD3(x: 0.0, y: 0.0, z: 0.0)
 		var offset3D:SIMD3<Scalar> = SIMD3(x: 0.5, y: 0.0, z: -0.8)
 		return simd_float3(pos.x+offset3D.x, pos.y+offset3D.y, pos.z+offset3D.z)
 	}
