@@ -336,7 +336,6 @@ struct HandTrackJson3D: Codable {
 	var handJoints: [[[SIMD3<Scalar>?]]] = []			// array of fingers of both hand (0:right hand, 1:left hand)
 	var rotateHands: Bool = false
 	var offset3D:SIMD3<Scalar> = SIMD3(0.5, 0.0, -1.0)
-//	var offset3D:SIMD3<Scalar> = SIMD3(0.5, 0.4, -2.25)	// value for Gesture_Cue
 
 	// IN : 3D data
 	init(handTrackData: [[[SIMD3<Scalar>?]]]) {
@@ -431,6 +430,7 @@ struct HandTrackJson3D: Codable {
 						continue
 					}
 					if let pos = dt3D[hand][finger][joint] {
+//						let rotatedVector = rotateZ * pos
 						let rotatedVector = rotateZ * rotateY * pos
 						let shiftedVector = shift3D(rotatedVector)
 						handJoints[hand][finger][joint] = shiftedVector
@@ -446,6 +446,8 @@ struct HandTrackJson3D: Codable {
 	}
 	
 	func shift3D(_ pos: SIMD3<Scalar>) -> SIMD3<Scalar> {
+//		var offset3D:SIMD3<Scalar> = SIMD3(x: 0.0, y: 0.0, z: 0.0)
+		var offset3D:SIMD3<Scalar> = SIMD3(x: 0.5, y: 0.0, z: -0.8)
 		return simd_float3(pos.x+offset3D.x, pos.y+offset3D.y, pos.z+offset3D.z)
 	}
 

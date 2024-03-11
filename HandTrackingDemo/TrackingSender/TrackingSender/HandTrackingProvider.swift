@@ -68,7 +68,9 @@ class HandTrackingProvider: NSObject {
 				try setupAVSession()
 				cameraView.previewLayer.session = cameraFeedSession
 			}
-			self.cameraFeedSession?.startRunning()
+			DispatchQueue.global(qos: .background).async {
+				self.cameraFeedSession?.startRunning()
+			}
 		} catch {
 			NSLog("camera session could not run")
 		}
