@@ -8,6 +8,17 @@ Custom Gesture UI for Apple Vision Pro
 [発表資料](https://github.com/AlohaYos/ProjectJarvis/blob/main/BootCamp001最終.pdf)  
 [オープンソース：空間ジェスチャーサンプル VisionGesture](https://github.com/AlohaYos/VisionGesture)
 
+### 最終製品（公開アプリ）
+[Air Poolbar (App Store)](https://apps.apple.com/us/app/air-poolbar/id6473489849)  
+[プロモーションV](https://youtu.be/-KGQhV8TA-Q)  
+
+### デモビデオ
+[VisionGesture demo](https://www.youtube.com/watch?v=-j5wBexSdOw)  
+
+### 記事
+[Qiita：Vision Pro 空間ジェスチャーを作る](https://qiita.com/AlohaYos/items/aa7a6b0190d35a275e63)  
+[Singularity Society Blog：Vision Proで空間ジェスチャーアプリを作った物語](https://singularitysociety.org/articles/blog/2024-03-15-jarvis-airpoolbar/)  
+
 ---
 
 ## メンバー
