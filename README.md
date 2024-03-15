@@ -1,7 +1,12 @@
 # project_jarvis
 Custom Gesture UI for Apple Vision Pro
 ## Progress
-[Hand tracking gesture sample code](https://github.com/AlohaYos/ProjectJarvis/tree/main/HandTrackingDemo)  
+### 中間報告
+[発表資料](https://github.com/AlohaYos/ProjectJarvis/blob/main/BootCamp001中間.pdf)  
+[オープンソース：Hand tracking gesture sample code](https://github.com/AlohaYos/ProjectJarvis/tree/main/HandTrackingDemo)  
+### 最終報告
+[発表資料](https://github.com/AlohaYos/ProjectJarvis/blob/main/BootCamp001最終.pdf)  
+[オープンソース：空間ジェスチャーサンプル VisionGesture](https://github.com/AlohaYos/VisionGesture)
 
 ---
 
